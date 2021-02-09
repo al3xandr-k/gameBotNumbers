@@ -1,8 +1,8 @@
 'use strict'
 
 const gameBot = (x, y) => {
+  
   let num = Math.floor(Math.random() * (x + y) + x);
-
   let a = 10;
 
   const chanceLeft = () => {
@@ -15,6 +15,7 @@ const gameBot = (x, y) => {
   };
 
   return function () {
+
     let str = prompt('Угадайте число от 1 до 100.');
 
     if (str === null) {
@@ -42,3 +43,18 @@ const gameBot = (x, y) => {
 const game = gameBot(1, 100);
 game();
 
+// const doNum = (x, y, callback) => {
+//   if (typeof x === 'number' && typeof y === 'number') {
+//     callback(x, y);
+//   }
+// };
+
+// doNum(2, 3, function (x, y) {
+//   console.log(x + y);
+// })
+
+// function mult(z, t) {
+//   console.log(z * t);
+// }
+
+// doNum(2, 10, mult);
