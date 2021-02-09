@@ -6,26 +6,30 @@ const gameBot = (x, y) => {
   let i = 10;
 
   const askFunc = () => {
-
+    i--;
     let str = prompt('Угадайте число от 1 до 100.');
+    console.log(typeof +str);
 
     if (i === 0) {
       confirm('Попытки закончились, хотите сыграть еще?');
+      gameBot();
     } else if (str === null) {
-      console.log('Game Over');
+      alert('Game Over');
       return;
     } else if (str > num) {
-      console.log(`Загаданное число меньше, осталось попыток`);
-
+      alert(`Загаданное число меньше, осталось попыток ${i}`);
+      gameBot(1, 100);
     } else if (str !== str.trim()) {
-      console.log('Введи число! А не пустую строку.');
+      alert('Введи число! А не пустую строку.');
+      gameBot();
     } else if (str < num) {
-      console.log(`Загаданное число больше, осталось попыток`);
-
+      alert(`Загаданное число больше, осталось попыток ${i}`);
+      gameBot(1, 100);
+    } else if (typeof +str !== 'number') {
+      alert('Введи число! А не строку.');
+      gameBot();
     } else if (+str === num) {
-      confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
-    } else if (typeof str !== 'number') {
-      console.log('Введи число! А не строку.');
+      alert('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
     }
   }
   askFunc();
