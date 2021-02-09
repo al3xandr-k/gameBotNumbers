@@ -8,11 +8,11 @@ const gameBot = (x, y) => {
   function chanceLeft() {
     i--;
     console.log('i: ', i);
-    if (i > 0) {
+    if (i >= 0) {
       return i;
     }
   };
-  
+
   return function () {
 
     let str = prompt('Угадайте число от 1 до 100.');
