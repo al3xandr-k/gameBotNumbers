@@ -31,7 +31,7 @@ const gameBot = (x, y) => {
     } else if (+str === num) {
       alert('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
     }
-  }
+  } 
   askFunc();
 }
 
