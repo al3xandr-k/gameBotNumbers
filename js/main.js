@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 const gameBot = (x, y) => {
   let num = Math.floor(Math.random() * (x + y) + x);
 
@@ -9,17 +7,12 @@ const gameBot = (x, y) => {
 
   const chanceLeft = () => {
     a--;
-    console.log('z: ', a);
+    console.log('a: ', a);
     if (a >= 0) {
       return a;
     }
     chanceLeft();
   };
-
-
-  if (chanceLeft === 0) {
-    confirm('Попытки закончились, хотите сыграть еще?');
-  }
 
   return function () {
     let str = prompt('Угадайте число от 1 до 100.');
@@ -40,6 +33,8 @@ const gameBot = (x, y) => {
     } else if (typeof str !== 'number') {
       console.log('Введи число! А не строку.');
       str = prompt('Угадайте число от 1 до 100.')
+    } else if (chanceLeft() === 0) {
+      confirm('Попытки закончились, хотите сыграть еще?');
     }
   }
 }
