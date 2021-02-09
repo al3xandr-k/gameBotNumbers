@@ -4,31 +4,42 @@
 
 const gameBot = (x, y) => {
   let num = Math.floor(Math.random() * (x + y) + x);
-  console.log('num: ', num);
+
+  let a = 10;
+
+  const chanceLeft = () => {
+    a--;
+    console.log('z: ', a);
+    if (a >= 0) {
+      return a;
+    }
+    chanceLeft();
+  };
+
+
+  if (chanceLeft === 0) {
+    confirm('Попытки закончились, хотите сыграть еще?');
+  }
 
   return function () {
     let str = prompt('Угадайте число от 1 до 100.');
 
     if (str === null) {
-      console.log('Игра окончена.');
+      console.log('Game Over');
       return;
     } else if (str > num) {
-      console.log('Загаданное число меньше.');
+      console.log(`Загаданное число меньше, осталось попыток ${chanceLeft()}`);
       str = prompt('Угадайте число от 1 до 100.');
-      return;
     } else if (str !== str.trim()) {
       console.log('Введи число! А не пустую строку.');
-      return;
     } else if (str < num) {
-      console.log('Загаданное число больше');
+      console.log(`Загаданное число больше, осталось попыток ${chanceLeft()}`);
       str = prompt('Угадайте число от 1 до 100.');
-      return;
     } else if (+str === num) {
-      console.log('Поздравляю, Вы угадали!!!');
-      return;
+      confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
     } else if (typeof str !== 'number') {
       console.log('Введи число! А не строку.');
-      return;
+      str = prompt('Угадайте число от 1 до 100.')
     }
   }
 }
