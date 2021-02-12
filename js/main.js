@@ -3,8 +3,8 @@
 const gameBot = (x, y) => {
   let randomNumbers = Math.floor(Math.random() * (x + y) + x);
   let i = 10;
-  
-  console.log('randomNumbers: ', randomNumbers); 
+
+  console.log('randomNumbers: ', randomNumbers);
   //Данная строчка указывает число, для проверки условие когда randomNumbers === playerNumber;
 
   const gameConditions = () => {
@@ -15,11 +15,7 @@ const gameBot = (x, y) => {
       alert('Game Over');
     } else if (i === 0) {
       let chanceEnd = confirm('Попытки закончились, хотите сыграть еще?');
-      if (chanceEnd === true) {
-        gameBot(1, 100);
-      } else {
-        alert('Как хочешь, дружище! Приходи ещё.');
-      }
+      chanceEnd === true ? gameBot(1, 100) : alert('Как хочешь, дружище! Приходи ещё.');
     } else if (playerNumber !== playerNumber.trim() && playerNumber !== '') {
       alert('Введи число! А не пустую строку.');
       gameConditions();
@@ -31,11 +27,7 @@ const gameBot = (x, y) => {
       gameConditions();
     } else if (Number(playerNumber) === randomNumbers) {
       let finalQuestion = confirm('Поздравляю, Вы угадали!!! Хотели бы сыграть еще?');
-      if (finalQuestion === true) {
-        gameBot(1, 100);
-      } else {
-        alert('Как хочешь, дружище!');
-      };
+      finalQuestion === true ? gameBot(1, 100) : alert('Как хочешь, дружище!');
     } else if (typeof playerNumber !== 'number') {
       alert('Введи число! А не строку.');
       gameConditions();
